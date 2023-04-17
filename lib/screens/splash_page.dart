@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:refind/screens/main_app.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -32,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   route() {
-    // Navigator.of(context)
-    //     .pushReplacement(MaterialPageRoute(builder: (_) => NextPage()));
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (_) => const MainApp()));
   }
 }
