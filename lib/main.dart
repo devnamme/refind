@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:refind/screens/main_app.dart';
 import 'package:refind/screens/splash_page.dart';
 import 'package:refind/buttons/small_button.dart';
 
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
         // textTheme: TextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: const SplashPage(),
+      home: const MainApp(),
     );
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:refind/buttons/small_button.dart';
-import 'package:refind/closet_card.dart';
-import 'package:refind/funfact_card.dart';
-import 'package:refind/table_card.dart';
+import 'package:refind/constants/app_colors.dart';
+import 'package:refind/screens/closet_tab.dart';
+import 'package:refind/screens/clothing_tab.dart';
+import 'package:refind/screens/table_tab.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -36,7 +34,13 @@ class _MainAppState extends State<MainApp> {
             ),
             margin: const EdgeInsets.only(bottom: 4),
           ),
-          Text(text),
+          Text(
+            text,
+            style: Theme.of(context)
+                .textTheme
+                .labelMedium
+                .copyWith(color: Colors.black),
+          ),
         ],
       ),
     );
@@ -45,31 +49,22 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Text(
-              'Main App',
-            ),
-            SmallButton(
-              text: "Bid",
-            ),
-            SmallButton(
-              text: "Yours",
-              color: Color(0x00FFFFFF),
-              textColor: Color(0xFF28B5DF),
-            ),
-            SmallButton(
-              text: "Not Yours",
-              color: Color(0x00FFFFFF),
-              textColor: Color(0xFF28B5DF),
-            ),
-            ClosetCard(),
-            FunFact(),
-            TableCard(),
-          ],
+      body: bottomNavIndex == 0
+          ? TableTab()
+          : bottomNavIndex == 1
+              ? ClothingTab()
+              : ClosetTab(),
+      appBar: AppBar(
+        leading: Center(
+          child: Text('Leading'),
         ),
+        title: Text('Refind'),
+        actions: [
+          Center(
+            child: Text('Profile'),
+          ),
+        ],
+        centerTitle: true,
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
