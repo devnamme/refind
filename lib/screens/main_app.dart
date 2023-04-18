@@ -117,7 +117,7 @@ class _MainAppState extends State<MainApp> {
           customBottomNavBarItem(
             2,
             // clothes icon
-            Icons.checkroom_outlined,
+            Icons.shopping_cart_outlined,
           ),
           customBottomNavBarItem(
             3,
