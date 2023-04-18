@@ -26,18 +26,18 @@ class HomeHero extends StatelessWidget {
             Text(
               header,
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: Color(0xFF197D4B),
+                    color: const Color(0xFF197D4B),
                     height: 0.875,
                   ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Text(
               subheader,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Color(0xFF197D4B),
+                    color: const Color(0xFF197D4B),
                   ),
               textAlign: TextAlign.center,
             )

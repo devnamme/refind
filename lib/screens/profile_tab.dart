@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:refind/widgets/home_hero.dart';
 import 'package:refind/widgets/profile_main.dart';
-import 'package:refind/widgets/table_bids.dart';
-import 'package:refind/widgets/table_card.dart';
-import 'package:refind/widgets/table_categories.dart';
+import 'package:refind/widgets/table/table_categories.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
@@ -41,7 +38,8 @@ class _ProfileTabState extends State<ProfileTab> {
                 topLeft: Radius.circular(100),
                 topRight: Radius.circular(100),
               ),
-              color: selected ? Color(0xFF006C4A) : const Color(0x00FFFFFF),
+              color:
+                  selected ? const Color(0xFF006C4A) : const Color(0x00FFFFFF),
             ),
             height: 3,
             width: 24,
@@ -64,10 +62,10 @@ class _ProfileTabState extends State<ProfileTab> {
         ),
         Expanded(
           child: categoryIndex == 0
-              ? ProfileMain()
+              ? const ProfileMain()
               : categoryIndex == 1
-                  ? TableCard()
-                  : TableCard(),
+                  ? Container()
+                  : Container(),
         ),
       ],
     );
