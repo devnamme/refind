@@ -9,11 +9,15 @@ class ClothingCard extends StatefulWidget {
     required this.clothingName,
     required this.clothingSize,
     required this.sellerName,
+    this.withDuration = false,
+    this.duration = 0,
   });
 
   final String clothingName;
   final List<String> clothingSize;
   final String sellerName;
+  final bool withDuration;
+  final int duration;
 
   @override
   State<ClothingCard> createState() => _ClothingCardState();
