@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:refind/buttons/small_button.dart';
+import 'package:refind/closet_card.dart';
+import 'package:refind/funfact_card.dart';
+import 'package:refind/table_card.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -45,9 +48,26 @@ class _MainAppState extends State<MainApp> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text('Main App'),
-            SmallButton(text: "Bid"),
+          children: const [
+            Text(
+              'Main App',
+            ),
+            SmallButton(
+              text: "Bid",
+            ),
+            SmallButton(
+              text: "Yours",
+              color: Color(0x00FFFFFF),
+              textColor: Color(0xFF28B5DF),
+            ),
+            SmallButton(
+              text: "Not Yours",
+              color: Color(0x00FFFFFF),
+              textColor: Color(0xFF28B5DF),
+            ),
+            ClosetCard(),
+            FunFact(),
+            TableCard(),
           ],
         ),
       ),
