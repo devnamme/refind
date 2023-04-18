@@ -36,10 +36,10 @@ class _MainAppState extends State<MainApp> {
           ),
           Text(
             text,
-            style: Theme.of(context)
-                .textTheme
-                .labelMedium
-                .copyWith(color: Colors.black),
+            // style: Theme.of(context)
+            //     .textTheme
+            //     .labelMedium
+            //     ?.copyWith(color: Colors.black),
           ),
         ],
       ),

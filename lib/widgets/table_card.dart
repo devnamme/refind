@@ -30,6 +30,7 @@ class TableCard extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -48,6 +49,7 @@ class TableCard extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
+            textAlign: TextAlign.left,
           ),
           Text(
             clothingName,
