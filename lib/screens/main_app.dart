@@ -14,35 +14,28 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   int bottomNavIndex = 1;
 
-  Widget bottomNavItem(bool selected, int index, String text) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          bottomNavIndex = index;
-        });
-      },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 56,
-            height: 32,
-            decoration: BoxDecoration(
-              color:
-                  selected ? const Color(0xFFBAEAFF) : const Color(0x00FFFFFF),
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-            ),
-            margin: const EdgeInsets.only(bottom: 4),
-          ),
-          Text(
-            text,
-            // style: Theme.of(context)
-            //     .textTheme
-            //     .labelMedium
-            //     ?.copyWith(color: Colors.black),
-          ),
-        ],
+  BottomNavigationBarItem customBottomNavBarItem(
+    int index,
+    IconData icon,
+    String label,
+  ) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: bottomNavIndex == index
+              ? const Color(0x334DDDA0)
+              : Colors.transparent,
+        ),
+        height: 48,
+        width: 48,
+        child: Icon(
+          icon,
+          color: Colors.black,
+          size: 24,
+        ),
       ),
+      label: label,
     );
   }
 
@@ -54,34 +47,46 @@ class _MainAppState extends State<MainApp> {
           : bottomNavIndex == 1
               ? ClothingTab()
               : ClosetTab(),
-      appBar: AppBar(
-        leading: Center(
-          child: Text('Leading'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: Row(
+          children: [
+            Text('Profile'),
+            Text('Undo'),
+            Spacer(),
+            Text('Refind'),
+            Spacer(),
+            Text('Filter'),
+          ],
         ),
-        title: Text('Refind'),
-        actions: [
-          Center(
-            child: Text('Profile'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: bottomNavIndex,
+        onTap: (val) => {
+          setState(() {
+            bottomNavIndex = val;
+          })
+        },
+        fixedColor: Colors.black,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: [
+          customBottomNavBarItem(
+            0,
+            Icons.table_restaurant_outlined,
+            'Table',
+          ),
+          customBottomNavBarItem(
+            1,
+            Icons.table_restaurant_outlined,
+            'Clothing',
+          ),
+          customBottomNavBarItem(
+            2,
+            Icons.checkroom_outlined,
+            'Closet',
           ),
         ],
-        centerTitle: true,
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFFECEEEA),
-        ),
-        height: 64,
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              bottomNavItem(bottomNavIndex == 0, 0, 'Table'),
-              bottomNavItem(bottomNavIndex == 1, 1, 'Clothing'),
-              bottomNavItem(bottomNavIndex == 2, 2, 'Closet'),
-            ],
-          ),
-        ),
       ),
     );
   }

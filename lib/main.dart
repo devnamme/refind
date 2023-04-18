@@ -89,7 +89,7 @@ class App extends StatelessWidget {
           ),
         ),
       ),
-      home: const SplashPage(),
+      home: const MainApp(),
     );
   }
 }
