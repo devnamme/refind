@@ -3,6 +3,7 @@ import 'package:refind/constants/app_colors.dart';
 import 'package:refind/screens/closet_tab.dart';
 import 'package:refind/screens/clothing_tab.dart';
 import 'package:refind/screens/table_tab.dart';
+import 'package:refind/screens/profile_tab.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -46,7 +47,9 @@ class _MainAppState extends State<MainApp> {
           ? TableTab()
           : bottomNavIndex == 1
               ? ClothingTab()
-              : ClosetTab(),
+              : bottomNavIndex == 2
+                  ? ClosetTab()
+                  : ProfileTab(),
       appBar: AppBar(
         title: Text('Refind'),
         centerTitle: true,
@@ -70,7 +73,8 @@ class _MainAppState extends State<MainApp> {
           ),
           customBottomNavBarItem(
             1,
-            Icons.table_restaurant_outlined,
+            // clothes icon
+            Icons.abc_outlined,
             'Clothing',
           ),
           customBottomNavBarItem(
@@ -80,7 +84,7 @@ class _MainAppState extends State<MainApp> {
           ),
           customBottomNavBarItem(
             3,
-            Icons.person_2_outlined,
+            Icons.account_circle_sharp,
             'Profile',
           ),
         ],
