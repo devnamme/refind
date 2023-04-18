@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:refind/buttons/small_button.dart';
-import 'package:refind/closet_card.dart';
-import 'package:refind/funfact_card.dart';
-import 'package:refind/table_card.dart';
+import 'package:refind/widgets/closet_card.dart';
+import 'package:refind/widgets/funfact_card.dart';
+import 'package:refind/widgets/table_card.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
