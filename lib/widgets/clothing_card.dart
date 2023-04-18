@@ -11,6 +11,8 @@ class ClothingCard extends StatefulWidget {
     required this.sellerName,
     this.withDuration = false,
     this.duration = 0,
+    required this.onPeek,
+    required this.startStopwatch,
   });
 
   final String clothingName;
@@ -18,6 +20,8 @@ class ClothingCard extends StatefulWidget {
   final String sellerName;
   final bool withDuration;
   final int duration;
+  final Function(double, double) onPeek;
+  final VoidCallback startStopwatch;
 
   @override
   State<ClothingCard> createState() => _ClothingCardState();
@@ -57,6 +61,8 @@ class _ClothingCardState extends State<ClothingCard> {
             isScrolling = true;
 
             position = Offset.zero;
+            widget.onPeek(0, 0);
+
             hasDir = false;
             isHorizontal = true;
           });
@@ -64,6 +70,14 @@ class _ClothingCardState extends State<ClothingCard> {
         onPanUpdate: (details) {
           setState(() {
             position += details.delta;
+            widget.onPeek(
+              min(
+                  1,
+                  max(position.dy - 300, 0) /
+                      MediaQuery.of(context).size.height),
+              position.dy,
+            );
+
             if (!hasDir) {
               if (position.distance > 8) {
                 hasDir = true;
@@ -87,10 +101,17 @@ class _ClothingCardState extends State<ClothingCard> {
         onPanEnd: (details) {
           setState(() {
             isScrolling = false;
+            widget.onPeek(
+              lockedDown ? 1 : 0,
+              lockedDown ? MediaQuery.of(context).size.height : 0,
+            );
 
             if (!lockedDown) {
               position = Offset.zero;
+            } else {
+              widget.startStopwatch();
             }
+
             hasDir = false;
           });
         },
