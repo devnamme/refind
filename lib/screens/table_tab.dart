@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:refind/widgets/home_hero.dart';
+import 'package:refind/widgets/table_categories.dart';
 
 class TableTab extends StatefulWidget {
   const TableTab({super.key});
@@ -10,6 +12,11 @@ class TableTab extends StatefulWidget {
 class _TableTabState extends State<TableTab> {
   @override
   Widget build(BuildContext context) {
-    return const Text('Table Tab');
+    return Column(
+      children: [
+        HomeHero(),
+        TableCategories(),
+      ],
+    );
   }
 }
