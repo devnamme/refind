@@ -5,6 +5,13 @@ import 'package:refind/screens/clothing_tab.dart';
 import 'package:refind/screens/table_tab.dart';
 import 'package:refind/screens/profile_tab.dart';
 
+const TITLES = [
+  'Profile',
+  'Clothes Rack',
+  'Refind',
+  'Closet',
+];
+
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
@@ -13,12 +20,11 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int bottomNavIndex = 1;
+  int bottomNavIndex = 2;
 
   BottomNavigationBarItem customBottomNavBarItem(
     int index,
     IconData icon,
-    String label,
   ) {
     return BottomNavigationBarItem(
       icon: Container(
@@ -36,7 +42,7 @@ class _MainAppState extends State<MainApp> {
           size: 24,
         ),
       ),
-      label: label,
+      label: TITLES[index],
     );
   }
 
@@ -44,14 +50,47 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: bottomNavIndex == 0
-          ? TableTab()
+          ? ProfileTab()
           : bottomNavIndex == 1
-              ? ClothingTab()
+              ? TableTab()
               : bottomNavIndex == 2
-                  ? ClosetTab()
-                  : ProfileTab(),
+                  ? ClothingTab()
+                  : ClosetTab(),
       appBar: AppBar(
-        title: Text('Refind'),
+        backgroundColor: Color(0xFFF4FFF6),
+        leading: bottomNavIndex == 2
+            ? IconButton(
+                icon: Icon(Icons.undo),
+                onPressed: () {},
+                color: AppColors.SECONDARY60,
+              )
+            : Container(),
+        title: Text(
+          TITLES[bottomNavIndex],
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                foreground: Paint()
+                  ..shader = AppColors.GRADIENT_SEAFOAM_TO_BOTTOM.createShader(
+                    Rect.fromLTWH(0, 0, 200, 50),
+                  ),
+              ),
+        ),
+        actions: bottomNavIndex == 2
+            ? [
+                Builder(
+                  builder: (ctx) => Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: IconButton(
+                      icon: const Icon(Icons.filter_list),
+                      onPressed: () {
+                        Scaffold.of(ctx).openEndDrawer();
+                      },
+                      color: AppColors.SECONDARY60,
+                    ),
+                  ),
+                ),
+              ]
+            : [],
+        elevation: 0,
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -62,33 +101,31 @@ class _MainAppState extends State<MainApp> {
             bottomNavIndex = val;
           })
         },
+        type: BottomNavigationBarType.fixed,
         fixedColor: Colors.black,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: [
           customBottomNavBarItem(
             0,
-            Icons.table_restaurant_outlined,
-            'Table',
+            Icons.account_circle_sharp,
           ),
           customBottomNavBarItem(
             1,
-            // clothes icon
-            Icons.abc_outlined,
-            'Clothing',
+            Icons.table_restaurant_outlined,
           ),
           customBottomNavBarItem(
             2,
-            Icons.checkroom_outlined,
-            'Closet',
+            // clothes icon
+            Icons.abc_outlined,
           ),
           customBottomNavBarItem(
             3,
-            Icons.account_circle_sharp,
-            'Profile',
+            Icons.checkroom_outlined,
           ),
         ],
       ),
+      endDrawer: Drawer(),
     );
   }
 }
