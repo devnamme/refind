@@ -5,6 +5,7 @@ class AppColors {
   static const Color PRIMARY87 = Color(0xFF82EFBC);
 
   static const Color SECONDARY = Color(0xFF006D43); // darker
+  static const Color SECONDARY60 = Color(0xFF3CA26F);
   static const Color SECONDARY70 = Color(0xFF5ABE88);
 
   static const Color TERTIARY = Color(0xFF63FEAD); // lighter
