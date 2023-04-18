@@ -15,7 +15,7 @@ class _ClothingTabState extends State<ClothingTab> {
       padding: EdgeInsets.all(16),
       child: ClothingCard(
         clothingName: 'Clothing Name',
-        clothingSize: 'S',
+        clothingSize: ['S', 'M'],
         sellerName: 'Seller Name',
       ),
     );
