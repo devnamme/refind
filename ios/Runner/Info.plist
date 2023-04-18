@@ -47,5 +47,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+  <key>NSCameraUsageDescription</key>
+  <string>The camera will only be used for taking pictures of clothing that the user will sell.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>The microphone is part of camera usage but audio will not be recorded.</string>
 </dict>
 </plist>
