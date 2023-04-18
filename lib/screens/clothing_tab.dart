@@ -23,6 +23,51 @@ class _ClothingTabState extends State<ClothingTab> {
 
   bool timerDone = false;
 
+  List<Map<String, String>> DATA = [
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1o8Yp1sLMqwB4d5BHYTUHNMRcGLwHbheI',
+      'name': 'ateneo shirt',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1nEX-o5bqQFB0lnFfe2_xD5Kd9l9ECUBa',
+      'name': 'Kai Sotto shirt',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1Uw2mqjpwg1UrTneRr2UwMxEbnwNvaiTj',
+      'name': 'Long Sleeve polo',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/16NZInc0DyZlDGnyPsLaZCheJMq6NlFxt',
+      'name': 'Sweater from Melbourne Australia',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1exXB_tdcxCkyUemVzWMCXWU15hCFp5ic',
+      'name': 'The Dress',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1dTN5z7rYolT4mhhze6YnGs7uQQWFGPhb',
+      'name': 'Uniqlo polo',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+  ];
+
   startStopwatch() async {
     timerDone = false;
 
@@ -36,6 +81,8 @@ class _ClothingTabState extends State<ClothingTab> {
         timer.cancel();
 
         timerDone = true;
+
+        removeTop();
       }
     });
   }
@@ -44,6 +91,12 @@ class _ClothingTabState extends State<ClothingTab> {
     stopwatchTimer?.cancel();
     stopwatch.stop();
     stopwatch.reset();
+  }
+
+  removeTop() {
+    setState(() {
+      DATA.removeLast();
+    });
   }
 
   @override
@@ -65,26 +118,6 @@ class _ClothingTabState extends State<ClothingTab> {
             height: 256,
             decoration: BoxDecoration(
               gradient: AppColors.GRADIENT_PRIMARY_TO_BOTTOM,
-            ),
-          ),
-        ),
-        // white cover
-        Transform(
-          alignment: Alignment.center,
-          transform: Matrix4.identity()..translate(0, min(vertPeek, 200)),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.elliptical(
-                  peekProgress * MediaQuery.of(context).size.width / 2,
-                  peekProgress * 64,
-                ),
-                topRight: Radius.elliptical(
-                  peekProgress * MediaQuery.of(context).size.width / 2,
-                  peekProgress * 64,
-                ),
-              ),
             ),
           ),
         ),
@@ -151,6 +184,27 @@ class _ClothingTabState extends State<ClothingTab> {
                   ],
                 ),
               ],
+            ),
+          ),
+        ),
+        // white cover
+        Transform(
+          alignment: Alignment.center,
+          transform: Matrix4.identity()
+            ..translate(0, vertPeek > 0 ? min(vertPeek, 200) : 0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.elliptical(
+                  peekProgress * MediaQuery.of(context).size.width / 2,
+                  peekProgress * 64,
+                ),
+                topRight: Radius.elliptical(
+                  peekProgress * MediaQuery.of(context).size.width / 2,
+                  peekProgress * 64,
+                ),
+              ),
             ),
           ),
         ),
@@ -298,48 +352,29 @@ class _ClothingTabState extends State<ClothingTab> {
         // cards
         Transform(
           alignment: Alignment.center,
-          transform: Matrix4.identity()..translate(0, vertPeek),
+          transform: Matrix4.identity()
+            ..translate(0, vertPeek > 0 ? vertPeek : 0),
           child: Container(
             padding: EdgeInsets.all(16),
             child: Stack(
-              children: [
-                ClothingCard(
-                  clothingName: 'Clothing Name',
-                  clothingSize: ['S', 'M'],
-                  sellerName: 'Seller Name',
-                  onPeek: (val, peekRaw) {
-                    setState(() {
-                      peekProgress = val;
-                      vertPeek = peekRaw;
-                    });
-                  },
-                  startStopwatch: startStopwatch,
-                ),
-                ClothingCard(
-                  clothingName: 'Clothing Name',
-                  clothingSize: ['S', 'M'],
-                  sellerName: 'Seller Name',
-                  onPeek: (val, peekRaw) {
-                    setState(() {
-                      peekProgress = val;
-                      vertPeek = peekRaw;
-                    });
-                  },
-                  startStopwatch: startStopwatch,
-                ),
-                ClothingCard(
-                  clothingName: 'Clothing Name',
-                  clothingSize: ['S', 'M'],
-                  sellerName: 'Seller Name',
-                  onPeek: (val, peekRaw) {
-                    setState(() {
-                      peekProgress = val;
-                      vertPeek = peekRaw;
-                    });
-                  },
-                  startStopwatch: startStopwatch,
-                ),
-              ],
+              children: DATA
+                  .map(
+                    (d) => ClothingCard(
+                      url: d['url']!,
+                      clothingName: d['name']!,
+                      clothingSize: [d['size']!],
+                      sellerName: d['seller']!,
+                      onPeek: (val, peekRaw) {
+                        setState(() {
+                          peekProgress = val;
+                          vertPeek = peekRaw;
+                        });
+                      },
+                      startStopwatch: startStopwatch,
+                      removeTop: removeTop,
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ),

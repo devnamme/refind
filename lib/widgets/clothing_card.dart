@@ -6,6 +6,7 @@ import 'package:refind/constants/app_colors.dart';
 class ClothingCard extends StatefulWidget {
   const ClothingCard({
     super.key,
+    required this.url,
     required this.clothingName,
     required this.clothingSize,
     required this.sellerName,
@@ -13,8 +14,10 @@ class ClothingCard extends StatefulWidget {
     this.duration = 0,
     required this.onPeek,
     required this.startStopwatch,
+    required this.removeTop,
   });
 
+  final String url;
   final String clothingName;
   final List<String> clothingSize;
   final String sellerName;
@@ -22,6 +25,7 @@ class ClothingCard extends StatefulWidget {
   final int duration;
   final Function(double, double) onPeek;
   final VoidCallback startStopwatch;
+  final VoidCallback removeTop;
 
   @override
   State<ClothingCard> createState() => _ClothingCardState();
@@ -99,6 +103,11 @@ class _ClothingCardState extends State<ClothingCard> {
               lockedDown ? MediaQuery.of(context).size.height : 0,
             );
 
+            if (isHorizontal) {
+              if (position.dx.abs() > MediaQuery.of(context).size.width / 4)
+                widget.removeTop();
+            }
+
             if (!lockedDown) {
               position = Offset.zero;
             } else {
@@ -121,7 +130,7 @@ class _ClothingCardState extends State<ClothingCard> {
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage('https://picsum.photos/900/1600'),
+                      image: NetworkImage(widget.url),
                       fit: BoxFit.cover,
                     ),
                   ),
