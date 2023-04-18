@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class HomeHero extends StatelessWidget {
   const HomeHero({
     Key? key,
-    this.header = "WHAT’S ON THE RACK?",
-    this.subheader = "Here are your ukay finds with ongoing bidding",
-    this.color = const Color(0xFF28B5DF),
+    this.header = "WHAT’S ON \n THE RACK?",
+    this.subheader = "Here are your ukay finds with \n ongoing bidding",
+    this.color = const Color(0xFFE8FFEF),
   }) : super(key: key);
 
   final String header;
@@ -25,12 +25,22 @@ class HomeHero extends StatelessWidget {
           children: [
             Text(
               header,
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    color: Color(0xFF197D4B),
+                    height: 0.875,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 24,
             ),
             Text(
               subheader,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Color(0xFF197D4B),
+                  ),
+              textAlign: TextAlign.center,
+            )
           ],
         ),
       ),

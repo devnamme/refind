@@ -6,12 +6,6 @@ import 'package:refind/screens/splash_page.dart';
 
 void main() {
   runApp(const App());
-  // runApp(MultiProvider(
-  //   providers: [
-  //     // ChangeNotifierProvider(create: (_) => FAuth()),
-  //   ],
-  //   child: App(),
-  // ));
 }
 
 class App extends StatelessWidget {
@@ -26,66 +20,59 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: TextTheme(
           displayLarge: GoogleFonts.fredoka(
-            fontSize: 57,
-            // height: 64,
+            fontSize: 45,
+            fontWeight: FontWeight.bold,
           ),
           displayMedium: GoogleFonts.fredoka(
             fontSize: 45,
-            // height: 52,
+            fontWeight: FontWeight.w500,
           ),
           displaySmall: GoogleFonts.openSans(
-            fontSize: 36,
-            // height: 44,
+            fontSize: 45,
           ),
           headlineLarge: GoogleFonts.fredoka(
             fontSize: 32,
-            // height: 40,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
           ),
           headlineMedium: GoogleFonts.openSans(
             fontSize: 28,
-            // height: 36,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w500,
           ),
           headlineSmall: GoogleFonts.fredoka(
             fontSize: 24,
-            // height: 32,
-          ),
-          titleLarge: GoogleFonts.fredoka(
-            fontSize: 22,
-            // height: 28,
-          ),
-          titleMedium: GoogleFonts.openSans(
-            fontSize: 16,
-            // height: 24,
-          ),
-          titleSmall: GoogleFonts.openSans(
-            fontSize: 14,
-            // height: 20,
-          ),
-          labelLarge: GoogleFonts.fredoka(
-            fontSize: 14,
-            // height: 20,
-          ),
-          labelMedium: GoogleFonts.fredoka(
-            fontSize: 12,
-            // height: 16,
-          ),
-          labelSmall: GoogleFonts.fredoka(
-            fontSize: 11,
-            // height: 16,
+            fontWeight: FontWeight.w500,
           ),
           bodyLarge: GoogleFonts.openSans(
             fontSize: 16,
-            // height: 24,
           ),
           bodyMedium: GoogleFonts.openSans(
             fontSize: 14,
-            // height: 20,
           ),
-          bodySmall: GoogleFonts.roboto(
+          bodySmall: GoogleFonts.openSans(
             fontSize: 12,
-            // height: 16,
+          ),
+          labelLarge: GoogleFonts.fredoka(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+          labelMedium: GoogleFonts.fredoka(
+            fontSize: 14,
+          ),
+          labelSmall: GoogleFonts.fredoka(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+          ),
+          titleLarge: GoogleFonts.fredoka(
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+          ),
+          titleMedium: GoogleFonts.openSans(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+          titleSmall: GoogleFonts.openSans(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

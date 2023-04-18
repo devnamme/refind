@@ -78,6 +78,11 @@ class _MainAppState extends State<MainApp> {
             Icons.checkroom_outlined,
             'Closet',
           ),
+          customBottomNavBarItem(
+            3,
+            Icons.person_2_outlined,
+            'Profile',
+          ),
         ],
       ),
     );

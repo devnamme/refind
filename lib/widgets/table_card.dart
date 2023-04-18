@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class TableCard extends StatelessWidget {
@@ -23,10 +24,14 @@ class TableCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
+        image: const DecorationImage(
+          image: NetworkImage('https://picsum.photos/900/1600'),
+          fit: BoxFit.cover,
+        ),
       ),
       padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 22,
+        horizontal: 20,
+        vertical: 14,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,35 +40,50 @@ class TableCard extends StatelessWidget {
           Row(
             children: [
               Expanded(child: Container()),
-              CircularProgressIndicator(
-                value: duration / 10,
-                backgroundColor: Colors.white,
-                valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
+              Stack(
+                children: [
+                  CircularProgressIndicator(
+                    value: duration / 10,
+                    valueColor:
+                        const AlwaysStoppedAnimation<Color>(Color(0xFF4DDDA0)),
+                  ),
+                ],
               ),
             ],
           ),
           Expanded(child: Container()),
-          Text(
-            size,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFF8BF8C4),
+              borderRadius: BorderRadius.circular(4),
             ),
-            textAlign: TextAlign.left,
+            child: Text(
+              size,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: Colors.black,
+                    height: 16 / 11,
+                  ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          const SizedBox(
+            height: 2,
           ),
           Text(
             clothingName,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Colors.white,
+                ),
+          ),
+          const SizedBox(
+            height: 2,
           ),
           Text(
             sellerName,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: Colors.white,
+                ),
           ),
         ],
       ),
