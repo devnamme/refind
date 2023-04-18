@@ -7,6 +7,7 @@ class RRectButton extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.textColor = Colors.black,
     required VoidCallback this.onTap,
+    this.isSmall = false,
   });
 
   final String text;
@@ -14,21 +15,30 @@ class RRectButton extends StatelessWidget {
   final Color textColor;
   final VoidCallback onTap;
 
+  final bool isSmall;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(isSmall ? 24 : 20)),
           color: backgroundColor,
         ),
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        padding: EdgeInsets.symmetric(
+          vertical: isSmall ? 8 : 16,
+          horizontal: isSmall ? 16 : 24,
+        ),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: textColor,
-              ),
+          style: isSmall
+              ? Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: textColor,
+                  )
+              : Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: textColor,
+                  ),
           textAlign: TextAlign.center,
         ),
       ),

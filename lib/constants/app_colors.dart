@@ -13,6 +13,8 @@ class AppColors {
   static const Color SURFACE = Color(0xFFF8FAF6);
   static const Color ON_SURFACE = Color(0xFF404943);
 
+  static const Color DARK_GRAY = Color(0xFF1C1C1D);
+
   static const LinearGradient GRADIENT_BLACK = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
