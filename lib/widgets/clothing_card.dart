@@ -45,15 +45,7 @@ class _ClothingCardState extends State<ClothingCard> {
     return Transform(
       alignment: Alignment.center,
       transform: Matrix4.identity()
-        ..translate(
-            isHorizontal ? position.dx : 0,
-            (!isScrolling && lockedDown)
-                ? MediaQuery.of(context).size.height
-                : isHorizontal
-                    ? 0
-                    : position.dy > 0
-                        ? position.dy
-                        : 0)
+        ..translate(isHorizontal ? position.dx : 0)
         ..rotateZ(isHorizontal ? position.dx / 128 * 5 / 180 * pi : 0),
       child: GestureDetector(
         onPanStart: (details) {
@@ -70,13 +62,6 @@ class _ClothingCardState extends State<ClothingCard> {
         onPanUpdate: (details) {
           setState(() {
             position += details.delta;
-            widget.onPeek(
-              min(
-                  1,
-                  max(position.dy - 300, 0) /
-                      MediaQuery.of(context).size.height),
-              position.dy,
-            );
 
             if (!hasDir) {
               if (position.distance > 8) {
@@ -86,6 +71,14 @@ class _ClothingCardState extends State<ClothingCard> {
             }
 
             if (!isHorizontal) {
+              widget.onPeek(
+                min(
+                    1,
+                    max(position.dy - 300, 0) /
+                        MediaQuery.of(context).size.height),
+                position.dy,
+              );
+
               if (position.dy > 100) {
                 setState(() {
                   lockedDown = true;

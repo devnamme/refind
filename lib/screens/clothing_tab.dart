@@ -26,7 +26,7 @@ class _ClothingTabState extends State<ClothingTab> {
   startStopwatch() async {
     timerDone = false;
 
-    stopwatch.reset();
+    stopTimers();
     stopwatch.start();
 
     stopwatchTimer = Timer.periodic(Duration(milliseconds: 10), (timer) {
@@ -38,6 +38,12 @@ class _ClothingTabState extends State<ClothingTab> {
         timerDone = true;
       }
     });
+  }
+
+  stopTimers() {
+    stopwatchTimer?.cancel();
+    stopwatch.stop();
+    stopwatch.reset();
   }
 
   @override
@@ -253,18 +259,33 @@ class _ClothingTabState extends State<ClothingTab> {
                   // button
                   Opacity(
                     opacity: timerDone ? 1 : 0,
-                    child: RRectButton(
-                      text: 'Grab now for P100.00',
-                      onTap: () {},
-                      backgroundColor: AppColors.SECONDARY,
-                      textColor: Colors.white,
+                    child: IgnorePointer(
+                      ignoring: !timerDone,
+                      child: RRectButton(
+                        text: 'Grab now for P100.00',
+                        onTap: () {
+                          setState(() {
+                            peekProgress = 0.0;
+                            vertPeek = 0.0;
+                            stopTimers();
+                          });
+                        },
+                        backgroundColor: AppColors.SECONDARY,
+                        textColor: Colors.white,
+                      ),
                     ),
                   ),
                   SizedBox(height: 16),
                   // cancel
                   RRectButton(
                     text: timerDone ? 'Okay, gotcha!' : 'I changed my mind',
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        peekProgress = 0.0;
+                        vertPeek = 0.0;
+                        stopTimers();
+                      });
+                    },
                     backgroundColor: Colors.transparent,
                     textColor: AppColors.SECONDARY,
                   ),
@@ -275,19 +296,51 @@ class _ClothingTabState extends State<ClothingTab> {
           ),
         ),
         // cards
-        Container(
-          padding: EdgeInsets.all(16),
-          child: ClothingCard(
-            clothingName: 'Clothing Name',
-            clothingSize: ['S', 'M'],
-            sellerName: 'Seller Name',
-            onPeek: (val, peekRaw) {
-              setState(() {
-                peekProgress = val;
-                vertPeek = peekRaw;
-              });
-            },
-            startStopwatch: startStopwatch,
+        Transform(
+          alignment: Alignment.center,
+          transform: Matrix4.identity()..translate(0, vertPeek),
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: Stack(
+              children: [
+                ClothingCard(
+                  clothingName: 'Clothing Name',
+                  clothingSize: ['S', 'M'],
+                  sellerName: 'Seller Name',
+                  onPeek: (val, peekRaw) {
+                    setState(() {
+                      peekProgress = val;
+                      vertPeek = peekRaw;
+                    });
+                  },
+                  startStopwatch: startStopwatch,
+                ),
+                ClothingCard(
+                  clothingName: 'Clothing Name',
+                  clothingSize: ['S', 'M'],
+                  sellerName: 'Seller Name',
+                  onPeek: (val, peekRaw) {
+                    setState(() {
+                      peekProgress = val;
+                      vertPeek = peekRaw;
+                    });
+                  },
+                  startStopwatch: startStopwatch,
+                ),
+                ClothingCard(
+                  clothingName: 'Clothing Name',
+                  clothingSize: ['S', 'M'],
+                  sellerName: 'Seller Name',
+                  onPeek: (val, peekRaw) {
+                    setState(() {
+                      peekProgress = val;
+                      vertPeek = peekRaw;
+                    });
+                  },
+                  startStopwatch: startStopwatch,
+                ),
+              ],
+            ),
           ),
         ),
       ],
