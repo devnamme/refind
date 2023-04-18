@@ -47,20 +47,12 @@ class _MainAppState extends State<MainApp> {
           : bottomNavIndex == 1
               ? ClothingTab()
               : ClosetTab(),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56),
-        child: Row(
-          children: [
-            Text('Profile'),
-            Text('Undo'),
-            Spacer(),
-            Text('Refind'),
-            Spacer(),
-            Text('Filter'),
-          ],
-        ),
+      appBar: AppBar(
+        title: Text('Refind'),
+        centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.SURFACE,
         currentIndex: bottomNavIndex,
         onTap: (val) => {
           setState(() {
