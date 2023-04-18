@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:refind/buttons/small_button.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -46,6 +47,7 @@ class _MainAppState extends State<MainApp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text('Main App'),
+            SmallButton(text: "Bid"),
           ],
         ),
       ),

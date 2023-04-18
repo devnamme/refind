@@ -26,7 +26,7 @@ class App extends StatelessWidget {
         // textTheme: TextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: const SmallButton(text: "Bid"),
+      home: const SplashPage(),
     );
   }
 }
