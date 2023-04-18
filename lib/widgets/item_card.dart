@@ -1,26 +1,28 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class TableCard extends StatelessWidget {
-  const TableCard({
+class ItemCard extends StatelessWidget {
+  const ItemCard({
     Key? key,
     this.clothingName = "Name of Clothing",
     this.sellerName = "Name of Seller",
     this.size = "XL",
-    this.duration = 4,
+    this.durationProgress = 50,
+    this.showDuration = false,
     this.color = const Color(0xFFE6F0EF),
   }) : super(key: key);
 
   final String clothingName;
   final String sellerName;
   final String size;
-  final int duration;
+  final int durationProgress;
+  final bool showDuration;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 240,
+      width: 160,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
@@ -40,15 +42,17 @@ class TableCard extends StatelessWidget {
           Row(
             children: [
               Expanded(child: Container()),
-              Stack(
-                children: [
-                  CircularProgressIndicator(
-                    value: duration / 10,
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(Color(0xFF4DDDA0)),
-                  ),
-                ],
-              ),
+              showDuration
+                  ? Stack(
+                      children: [
+                        CircularProgressIndicator(
+                          value: durationProgress / 100,
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFF4DDDA0)),
+                        ),
+                      ],
+                    )
+                  : Container(),
             ],
           ),
           Expanded(child: Container()),

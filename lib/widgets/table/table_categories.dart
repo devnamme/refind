@@ -56,10 +56,10 @@ class _TableCategoriesState extends State<TableCategories> {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: const Color(0xFFF8FAF6),
           border: Border(
             bottom: BorderSide(
-              color: Colors.grey[300]!,
+              color: const Color(0xFFE1E3DF),
               width: 1,
             ),
           ),

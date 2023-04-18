@@ -11,21 +11,27 @@ class FunFact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 300,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: const Color(0xFF28B5DF),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              text,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
+      height: 220,
+      width: 160,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 40,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: const Color(0xFF5ABE88),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
             ),
-          ],
-        ));
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
   }
 }
