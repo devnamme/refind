@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:refind/widgets/profile_main.dart';
+import 'package:refind/widgets/profile_orders.dart';
+import 'package:refind/widgets/profile_shipped.dart';
 import 'package:refind/widgets/table/table_categories.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -64,8 +66,8 @@ class _ProfileTabState extends State<ProfileTab> {
           child: categoryIndex == 0
               ? const ProfileMain()
               : categoryIndex == 1
-                  ? Container()
-                  : Container(),
+                  ? ProfileOrders()
+                  : ProfileShipped(),
         ),
       ],
     );

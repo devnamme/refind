@@ -3,6 +3,7 @@ import 'package:refind/widgets/home_hero.dart';
 import 'package:refind/widgets/table/table_bids.dart';
 import 'package:refind/widgets/table/table_categories.dart';
 import 'package:refind/widgets/table/table_yours.dart';
+import 'package:refind/widgets/table/tablet_notyours.dart';
 
 class TableTab extends StatefulWidget {
   const TableTab({super.key});
@@ -68,7 +69,7 @@ class _TableTabState extends State<TableTab> {
               ? const TableBids()
               : categoryIndex == 1
                   ? const TableYours()
-                  : Container(),
+                  : const TableNotYours(),
         ),
       ],
     );
