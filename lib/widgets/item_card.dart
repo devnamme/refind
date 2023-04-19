@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 class ItemCard extends StatelessWidget {
   const ItemCard({
     Key? key,
+    this.url = "https://picsum.photos/200",
     this.clothingName = "Name of Clothing",
     this.sellerName = "Name of Seller",
     this.size = "XL",
+    this.duration = 72,
     this.durationProgress = 50,
     this.showDuration = false,
     this.color = const Color(0xFFE6F0EF),
   }) : super(key: key);
 
+  final String url;
   final String clothingName;
   final String sellerName;
   final String size;
+  final int duration;
   final int durationProgress;
   final bool showDuration;
   final Color color;
@@ -26,8 +30,10 @@ class ItemCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
-        image: const DecorationImage(
-          image: NetworkImage('https://picsum.photos/900/1600'),
+        image: DecorationImage(
+          image: NetworkImage(
+            url,
+          ),
           fit: BoxFit.cover,
         ),
       ),
@@ -43,14 +49,32 @@ class ItemCard extends StatelessWidget {
             children: [
               Expanded(child: Container()),
               showDuration
-                  ? Stack(
-                      children: [
-                        CircularProgressIndicator(
-                          value: durationProgress / 100,
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color(0xFF4DDDA0)),
-                        ),
-                      ],
+                  ? SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: CircularProgressIndicator(
+                              value: durationProgress / 100,
+                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                  Color(0xFF4DDDA0)),
+                            ),
+                          ),
+                          Center(
+                            child: Text(
+                              "$duration hrs",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall
+                                  ?.copyWith(
+                                    color: const Color(0xFF4DDDA0),
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   : Container(),
             ],

@@ -7,6 +7,51 @@ class TableYours extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  static final List<Map<String, String>> DATA = [
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1o8Yp1sLMqwB4d5BHYTUHNMRcGLwHbheI',
+      'name': 'ateneo shirt',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1nEX-o5bqQFB0lnFfe2_xD5Kd9l9ECUBa',
+      'name': 'Kai Sotto shirt',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1Uw2mqjpwg1UrTneRr2UwMxEbnwNvaiTj',
+      'name': 'Long Sleeve polo',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/16NZInc0DyZlDGnyPsLaZCheJMq6NlFxt',
+      'name': 'Sweater from Melbourne Australia',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1exXB_tdcxCkyUemVzWMCXWU15hCFp5ic',
+      'name': 'The Dress',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+    {
+      'url':
+          'https://lh3.googleusercontent.com/d/1dTN5z7rYolT4mhhze6YnGs7uQQWFGPhb',
+      'name': 'Uniqlo polo',
+      'size': 'M',
+      'seller': 'Pie B. Kia',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -35,16 +80,17 @@ class TableYours extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: [
-              ItemCard(),
-              SizedBox(width: 8),
-              ItemCard(),
-              SizedBox(width: 8),
-              ItemCard(),
-              SizedBox(width: 8),
-              ItemCard(),
-              SizedBox(width: 8),
-            ],
+            children: DATA
+                .map((e) => Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: ItemCard(
+                        url: e['url']!,
+                        clothingName: e['name']!,
+                        size: e['size']!,
+                        sellerName: e['seller']!,
+                      ),
+                    ))
+                .toList(),
           ),
         ),
         Container(
@@ -82,16 +128,17 @@ class TableYours extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: [
-              ItemCard(),
-              SizedBox(width: 8),
-              ItemCard(),
-              SizedBox(width: 8),
-              ItemCard(),
-              SizedBox(width: 8),
-              ItemCard(),
-              SizedBox(width: 8),
-            ],
+            children: DATA
+                .map((e) => Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: ItemCard(
+                        url: e['url']!,
+                        clothingName: e['name']!,
+                        size: e['size']!,
+                        sellerName: e['seller']!,
+                      ),
+                    ))
+                .toList(),
           ),
         ),
         Container(
