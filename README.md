@@ -11,10 +11,10 @@
 GDSC-L HackFest 2023
 #### Team 5Kea
 
-Christian Sarabia
-Chester Rey
-Emman Evangelista
-Josh de Vera
-Danni Gallardo
+Christian Sarabia  
+Chester Rey  
+Emman Evangelista  
+Josh de Vera  
+Danni Gallardo 
 
 April 19, 2023
