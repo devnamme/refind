@@ -1,7 +1,7 @@
 # Refind
 ### Finding New Homes for Loved Clothes
 
-https://youtu.be/acIzEdxr-gY
+https://www.youtube.com/watch?v=blwXqp-8CJs
 
 ## Refind is a pre-loved clothes matching app that makes sustainable fashion friendly.
 
